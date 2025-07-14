@@ -17,7 +17,7 @@ const myWeek = [
   },
   {
     day: 'Wednesday',
-    activity: 'climb',
+    activity: 'climbing',
     category: 'physical',
     hoursSpent: 3,
     enjoyment: 8,
@@ -25,7 +25,7 @@ const myWeek = [
   },
   {
     day: 'Thursday',
-    activity: 'climb',
+    activity: 'climbing',
     category: 'physical',
     hoursSpent: 1,
     enjoyment: 5,
@@ -59,16 +59,29 @@ const myWeek = [
 
 // PREDICTIONS
 // Climbing will have the highest enjoyment.
-// Climbing will dominate my week.
+// I was 'physical' three nights a week.
 // I do everything at night because I work or run errands on weekend days.
 
-// My higher order function
-const physicalDays = (arr, myCategory) => {
+const physicalDays = (arr) => {
   const daysActive = arr.filter(categoryMatch);
   return daysActive.length;
 };
 
-const categoryMatch = (obj) => {
+const categoryMatchPhycial = (obj) => {
   return obj.category === 'physical';
 };
 console.log(physicalDays(myWeek));
+
+const mostEnjoyable = (arr) => {
+  let maxEnjoyment = -Infinity;
+  let mostEnjoyableActivity;
+
+  arr.map((obj) => {
+    if (obj.enjoyment > maxEnjoyment) {
+      maxEnjoyment = obj.enjoyment;
+      mostEnjoyableActivity = obj.activity;
+    }
+  });
+  return mostEnjoyableActivity;
+};
+console.log(mostEnjoyable(myWeek));
